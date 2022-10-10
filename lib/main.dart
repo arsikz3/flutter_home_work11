@@ -55,12 +55,46 @@ class _HomeViewState extends State<HomeView> {
                 child: Card(
                     shadowColor: Colors.red,
                     color: Colors.grey,
-                    child: Hero(
-                      tag: spaces[index].id,
-                      child: Column(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Stack(
                         children: [
-                          Image.asset(spaces[index].image),
-                          Text(spaces[index].description),
+                          Column(
+                            children: [
+                              Hero(
+                                  tag: spaces[index].id,
+                                  child: Image.asset(spaces[index].image)),
+                              Hero(
+                                tag: '${spaces[index].id}text',
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                                  child: Material(
+                                    color: Colors.grey,
+                                    child: Text(
+                                      spaces[index].description,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Positioned(
+                            //left: 100,
+                            //top: 35,
+                            right: 20,
+                            bottom: 20,
+                            child: Container(
+                              height: 30,
+                              width: 30,
+                              color: Colors.yellow,
+                              child: Icon(
+                                Icons.add,
+                                size: 30,
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     )),
@@ -71,12 +105,23 @@ class _HomeViewState extends State<HomeView> {
 
 class DetailPage extends StatelessWidget {
   final Space space;
-  DetailPage({Key? key, required Space this.space}) : super(key: key);
+  const DetailPage({Key? key, required this.space}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(),
-        body: Hero(tag: space.id, child: Image.asset(space.image)));
+        body: Column(
+          children: [
+            Hero(tag: space.id, child: Image.asset(space.image)),
+            Hero(
+              tag: '${space.id}text',
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Material(child: Text(space.description)),
+              ),
+            )
+          ],
+        ));
   }
 }
