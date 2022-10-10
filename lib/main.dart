@@ -1,13 +1,13 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_home_work11/space.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,15 +17,14 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomeView(title: 'Animations'),
+      home: const HomeView(title: 'Animations'),
     );
   }
 }
 
 class HomeView extends StatefulWidget {
-  HomeView({Key? key, required this.title}) : super(key: key);
-
   final String title;
+  const HomeView({Key? key, required this.title}) : super(key: key);
 
   @override
   _HomeViewState createState() => _HomeViewState();
@@ -89,7 +88,7 @@ class _HomeViewState extends State<HomeView> {
                               height: 30,
                               width: 30,
                               color: Colors.yellow,
-                              child: Icon(
+                              child: const Icon(
                                 Icons.add,
                                 size: 30,
                               ),
