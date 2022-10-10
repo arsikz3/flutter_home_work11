@@ -62,7 +62,13 @@ class _HomeViewState extends State<HomeView> {
                             children: [
                               Hero(
                                   tag: spaces[index].id,
-                                  child: Image.asset(spaces[index].image)),
+                                  child: SizedBox(
+                                      height: 60,
+                                      width: MediaQuery.of(context).size.width,
+                                      child: Image.asset(
+                                        spaces[index].image,
+                                        fit: BoxFit.fitWidth,
+                                      ))),
                               Hero(
                                 tag: '${spaces[index].id}text',
                                 child: Padding(
